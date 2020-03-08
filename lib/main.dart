@@ -25,25 +25,33 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
+  String _text = "";
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Center(
-          child: Image(
-            image: AssetImage('images/magic8ball.jpg'),
+    return FlatButton(
+      onPressed: () {
+        setState(() {
+          _text = "No!";
+        });
+      },
+      child: Stack(
+        children: <Widget>[
+          Center(
+            child: Image(
+              image: AssetImage('images/magic8ball.jpg'),
+            ),
           ),
-        ),
-        Center(
-          child: Text(
-            "Yes!",
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-                color: Colors.purple.shade400),
+          Center(
+            child: Text(
+              _text,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  color: Colors.purple.shade400),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
