@@ -1,18 +1,49 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(
+      MaterialApp(
+        home: BallPage(),
+      ),
+    );
 
-class MyApp extends StatelessWidget {
+class BallPage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Ask a Question"),
-        ),
-        body: Center(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Ask a Question"),
       ),
+      body: Ball(),
+    );
+  }
+}
+
+class Ball extends StatefulWidget {
+  @override
+  _BallState createState() => _BallState();
+}
+
+class _BallState extends State<Ball> {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        Center(
+          child: Image(
+            image: AssetImage('images/magic8ball.jpg'),
+          ),
+        ),
+        Center(
+          child: Text(
+            "Yes!",
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                color: Colors.purple.shade400),
+          ),
+        ),
+      ],
     );
   }
 }
