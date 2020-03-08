@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(
       MaterialApp(
@@ -26,12 +27,14 @@ class Ball extends StatefulWidget {
 
 class _BallState extends State<Ball> {
   String _text = "";
+  var _answers = ["Yes!", "No!", "Ask Again\nLater", "Decidedly\nSo"];
   @override
   Widget build(BuildContext context) {
     return FlatButton(
       onPressed: () {
+        var answer = Random().nextInt(4);
         setState(() {
-          _text = "No!";
+          _text = _answers[answer];
         });
       },
       child: Stack(
@@ -48,6 +51,7 @@ class _BallState extends State<Ball> {
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
                   color: Colors.purple.shade400),
+              textAlign: TextAlign.center,
             ),
           ),
         ],
